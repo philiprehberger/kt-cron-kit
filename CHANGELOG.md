@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.0] - 2026-04-05
+
+- Add `between(start, end)` to count cron occurrences within a time range
+
 ## 0.1.4 (2026-03-31)
 
 - Standardize README to 3-badge format with emoji Support section

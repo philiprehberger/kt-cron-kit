@@ -44,6 +44,22 @@ public class CronExpression internal constructor(
         return matchesDateTime(dt)
     }
 
+    /** Count the number of times this expression triggers between [start] (inclusive) and [end] (exclusive). */
+    public fun between(start: Instant, end: Instant): Int {
+        require(!end.isBefore(start)) { "end must not be before start" }
+        var count = 0
+        var dt = LocalDateTime.ofInstant(start, ZoneOffset.UTC).withSecond(0).withNano(0)
+        val endDt = LocalDateTime.ofInstant(end, ZoneOffset.UTC).withSecond(0).withNano(0)
+        // Check if the truncated start itself matches
+        if (dt.isBefore(endDt) && matchesDateTime(dt)) count++
+        dt = dt.plusMinutes(1)
+        while (dt.isBefore(endDt)) {
+            if (matchesDateTime(dt)) count++
+            dt = dt.plusMinutes(1)
+        }
+        return count
+    }
+
     private fun matchesDateTime(dt: LocalDateTime): Boolean {
         return dt.minute in minutes && dt.hour in hours && dt.dayOfMonth in daysOfMonth &&
             dt.monthValue in months && (dt.dayOfWeek.value % 7) in daysOfWeek
