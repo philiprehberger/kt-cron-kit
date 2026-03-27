@@ -3,6 +3,7 @@
 [![Tests](https://github.com/philiprehberger/kt-cron-kit/actions/workflows/publish.yml/badge.svg)](https://github.com/philiprehberger/kt-cron-kit/actions/workflows/publish.yml)
 [![Maven Central](https://img.shields.io/maven-central/v/com.philiprehberger/cron-kit)](https://central.sonatype.com/artifact/com.philiprehberger/cron-kit)
 [![License](https://img.shields.io/github/license/philiprehberger/kt-cron-kit)](LICENSE)
+[![Sponsor](https://img.shields.io/badge/sponsor-GitHub%20Sponsors-ec6cb9)](https://github.com/sponsors/philiprehberger)
 
 Cron expression parsing, scheduling, and human-readable descriptions.
 
