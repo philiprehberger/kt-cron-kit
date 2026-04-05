@@ -11,7 +11,7 @@ Cron expression parsing, scheduling, and human-readable descriptions.
 ### Gradle (Kotlin DSL)
 
 ```kotlin
-implementation("com.philiprehberger:cron-kit:0.1.3")
+implementation("com.philiprehberger:cron-kit:0.2.0")
 ```
 
 ### Maven
@@ -20,7 +20,7 @@ implementation("com.philiprehberger:cron-kit:0.1.3")
 <dependency>
     <groupId>com.philiprehberger</groupId>
     <artifactId>cron-kit</artifactId>
-    <version>0.1.3</version>
+    <version>0.2.0</version>
 </dependency>
 ```
 
@@ -33,6 +33,7 @@ val cron = Cron.parse("*/15 9-17 * * MON-FRI")
 cron.nextAfter(Instant.now())
 cron.matches(Instant.now())
 cron.describe() // "Every 15 minutes"
+cron.between(start, end) // count occurrences in range
 
 Cron.isValid("0 25 * * *") // false
 ```
@@ -47,6 +48,7 @@ Cron.isValid("0 25 * * *") // false
 | `CronExpression.nextN(instant, count)` | Next N matching times |
 | `CronExpression.previousBefore(instant)` | Previous matching time |
 | `CronExpression.matches(instant)` | Check if instant matches |
+| `CronExpression.between(start, end)` | Count occurrences in a time range |
 | `CronExpression.describe()` | Human-readable description |
 
 ## Development
